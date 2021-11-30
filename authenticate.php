@@ -53,7 +53,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
 
 	$stmt->close();
 }
-=======
+
 <?php
 session_start();
 // Change this to your connection info.
