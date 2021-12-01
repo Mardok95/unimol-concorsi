@@ -44,7 +44,7 @@ if($_FILES["zip_file"]["name"]) {
 
   //if (is_dir($targetdir))  rmdir_recursive ( $targetdir);
 
-//https://www.codexworld.com/import-csv-file-data-into-mysql-database-php/
+
   //mkdir($targetdir, 0777);
 
 
