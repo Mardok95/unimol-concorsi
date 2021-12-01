@@ -7,4 +7,5 @@ TODO:
 2) Duplicare quanto fatto (login, pagina personale ecc) per l'admin in modo che abbia un suo login
 3) Creare una tabella per l'admin
 4) Importare il file CSV nel database: //https://www.codexworld.com/import-csv-file-data-into-mysql-database-php/
-5) OPTIONAL: Per sincronizzare il lavoro su github, alla fine di ogni lavoro esportare il DB e caricarlo sul git
+5) OPTIONAL: Per sincronizzare il lavoro su github, alla fine di ogni lavoro esportare il DB e caricarlo sul git...segui questo link nel caso (https://stackoverflow.com/questions/42683529/how-to-work-with-phpmyadmin-and-github)
+6) Creare un CONFIG in cui metto tutte le operazioni stupide e tutte le info dei path ecc per settare poi il server (come ti ha suggerito Eug)
