@@ -17,16 +17,24 @@ if (!isset($_SESSION['loggedin'])) {
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	</head>
 	<body class="loggedin">
+	<?php if (isset($_SESSION['message'])): ?>
+	<div class="msg">
+		<?php 
+			echo $_SESSION['message']; 
+			unset($_SESSION['message']);
+		?>
+	</div>
+	<?php endif ?>
 		<nav class="navtop">
 			<div>
-				<h1>Admin Page</h1>
+				<h1>Unimol Concorsi</h1>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
 		<div class="content">
-			<h2>Visualizza risultati</h2>
-			<p>Welcome back, <?=$_SESSION['username']?>!</p>
-			 <p> <a href='upload.php'>Carica un zip</a> </p>
+			<h2>Admin Page</h2>
+			<p> <a href='upload.php'>Carica un zip</a> </p>
+			<p> <a href='gestione.php'>Gestione concorsi</a></p>
 
 
 		</div>
