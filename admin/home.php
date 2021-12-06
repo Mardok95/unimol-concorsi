@@ -35,6 +35,8 @@ if (!isset($_SESSION['loggedin'])) {
 			<h2>Admin Page</h2>
 			<p> <a href='upload.php'>Carica un zip</a> </p>
 			<p> <a href='gestione.php'>Gestione concorsi</a></p>
+			<p> <a href='upload_csv.php'>Carica un CSV</a></p>
+
 
 
 		</div>
