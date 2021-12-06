@@ -72,27 +72,40 @@ if($_FILES["zip_file"]["name"]) {
 
             unlink($targetzip);
         }
-        $message = "Your .zip file was uploaded and unpacked.";
+        $message = "Il tuo file zip è stato caricato ed estratto con successo!";
     } else {    
-        $message = "There was a problem with the upload. Please try again.";
+        $message = "Problema in upload. Prova di nuovo!";
     }
 }
 
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Unzip a zip file to the webserver</title>
-</head>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<title>Upload ZIP</title>
+		<link href="style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
 
-<body>
-<?php if($message) echo "<p>$message</p>"; ?>
-<form enctype="multipart/form-data" method="post" action="">
-<label>Scegli un file zip: <input type="file" name="zip_file" /></label>
-<br />
-<input type="submit" name="submit" value="Upload" />
-</form>
-</body>
+    <body>
+        <?php if($message) echo "<p>$message</p>"; ?>
+        <nav class="navtop">
+			<div>
+				<h1>Upload ZIP</h1>
+				<a href="home.php"><i class="fas fa-home"></i>Home</a>
+				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+			</div>
+		</nav>
+        <form enctype="multipart/form-data" method="post" action="">
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Scegli un file zip: <input type="file" name="zip_file" /></label>
+            <input class="form-control" type="submit" id="formFile" value="Upload"  />
+        </div>
+        </form>
+    </body>
+    <!-- https://getbootstrap.com/docs/5.0/forms/form-control/ -->
 </html>
+
+

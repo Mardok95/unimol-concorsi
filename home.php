@@ -25,12 +25,11 @@ if (!isset($_SESSION['loggedin'])) {
 		</nav>
 		<div class="content">
 			<h2>Visualizza risultati</h2>
-			<p>Welcome back, <?=$_SESSION['cod_risposta']?>!</p>
 			<p>
-				<a href='download.php'>Visualizza risposte</a>
-
+				<button class="favorite styled" type="button">
+					<a href='download.php'><i class="fas fa-file-pdf"> Visualizza risposte</i></a>
+				</button>
 			</p>
-
 		</div>
 	</body>
 </html>

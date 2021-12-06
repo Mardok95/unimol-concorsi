@@ -30,12 +30,26 @@ if (!isset($_SESSION['loggedin'])) {
 				<h1>Unimol Concorsi</h1>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
+
 		</nav>
 		<div class="content">
 			<h2>Admin Page</h2>
-			<p> <a href='upload.php'>Carica un zip</a> </p>
-			<p> <a href='gestione.php'>Gestione concorsi</a></p>
-			<p> <a href='upload_csv.php'>Carica un CSV</a></p>
+			<p>
+				<button class="favorite styled" type="button">
+					<a href='upload.php'><i class="fas fa-file-archive"> Carica un zip</i></a>
+				</button>
+			</p>
+			<p>
+				<button class="favorite styled" type="button">
+					<a href='gestione.php'><i class="fas fa-tasks"> Gestione concorsi</i></a>
+				</button>
+			</p>
+			<p>
+				<button class="favorite styled" type="button">
+					<a href='upload_csv.php'><i class="fas fa-file-csv"> Carica un CSV</i></a>
+				</button>
+			</p>
+
 
 
 
