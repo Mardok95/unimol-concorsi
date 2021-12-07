@@ -6,10 +6,25 @@ if (!isset($_SESSION['loggedin'])) {
 	header('Location: index.html');
 	exit;
 }
+
+require 'config.php';
 ?>
 
 
 <?php 
+
+// Change this to your connection info.
+$DATABASE_HOST = 'localhost';
+$DATABASE_USER = 'root';
+$DATABASE_PASS = '';
+$DATABASE_NAME = 'unimol_concorsi';
+// Try and connect using the info above.
+$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+if ( mysqli_connect_errno() ) {
+	// If there is an error with the connection, stop the script and display the error.
+	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+}
+
 
 
 
@@ -43,9 +58,9 @@ if($_FILES["zip_file"]["name"]) {
     }
 
   /* PHP current path */
-  $path = 'C:/prova'.'/';
+  $path = PATH_ALLEGATI.'/';
 
-  $files = glob('C:/prova/*'); // get all file names
+  $files = glob($path.'*'); // get all file names
         foreach($files as $file){ // iterate files
             if(is_file($file)) {
                 unlink($file); // delete file
@@ -109,6 +124,20 @@ if($_FILES["zip_file"]["name"]) {
 		</nav>
         <hr></hr>
         <form enctype="multipart/form-data" method="post" action="">
+            <div class="d-flex justify-content-center">
+            <label for="formFileLg" class="form-label">Scegli un concorso: </label>
+            <select name="select_concorso">
+                    <?php
+                        $res_concorsi = $con->query("SELECT * FROM concorsi WHERE abilitato=1 ORDER BY denominazione");
+                        while($row = $res_concorsi->fetch_object()){
+                            $id_concorso=$row->id;
+                            $denominazione_concorso=$row->denominazione;
+                            echo "<option value='".$id_concorso."'>".$denominazione_concorso."</option>";
+                        }
+                    ?> 
+                </select>
+            </div>
+            <hr></hr>
             <div class="d-flex justify-content-center">
                 <label for="formFileLg" class="form-label">Scegli un file zip: <input type="file" name="zip_file" /></label>
                 <button type="submit" class="btn btn-primary">Upload</button>

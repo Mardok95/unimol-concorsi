@@ -76,7 +76,7 @@ if(!empty($_GET['status'])){
                 <label for="concorsi">Scegli un conocrso</label>
                 <select name="select_concorso">
                     <?php
-                        $res_concorsi = $con->query("SELECT * FROM concorsi WHERE abilitato=1 ORDER BY id DESC");
+                        $res_concorsi = $con->query("SELECT * FROM concorsi WHERE abilitato=1 ORDER BY denominazione");
                         while($row = $res_concorsi->fetch_object()){
                             $id_concorso=$row->id;
                             $denominazione_concorso=$row->denominazione;
@@ -86,24 +86,26 @@ if(!empty($_GET['status'])){
                 </select>
                 <div class="d-flex justify-content-center" id="importFrm" style="display: none;">
                     <input type="file" name="file" />
-                    <input type="submit" class="btn btn-primary" name="importSubmit" value="IMPORT">
+                    <input type="submit" class="btn btn-primary" name="importSubmit" value="IMPORTA">
             </div>
             </form>
         </div>
         
     
-        <!-- Import link -->
+        <!-- Import link 
         <div class="d-flex justify-content-center">
             <div>
             <a href="javascript:void(0);" class="btn btn-success" onclick="formToggle('importFrm');"><i class="plus"></i>IMPORTA</a>
             </div>
         </div>
+        -->
 
         <!-- Data list table --> 
         <div class="d-flex justify-content-center">
             <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
                     <tr>
+                        <th>Concorso</th>
                         <th>Codice Anagrafica</th>
                         <th>Codice Risposte</th>
                     </tr>
@@ -112,11 +114,12 @@ if(!empty($_GET['status'])){
                 <tbody>
                     <?php
                     // Get member rows
-                    $result = $con->query("SELECT * FROM accounts ORDER BY id DESC");
+                    $result = $con->query("SELECT cod_anagrafica,cod_risposte,denominazione FROM accounts JOIN concorsi ON accounts.id_concorso=concorsi.id ORDER BY denominazione");
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){
                     ?>
                     <tr>
+                        <td><?php echo $row['denominazione']; ?></td>
                         <td><?php echo $row['cod_anagrafica']; ?></td>
                         <td><?php echo $row['cod_risposte']; ?></td>
                     </tr>

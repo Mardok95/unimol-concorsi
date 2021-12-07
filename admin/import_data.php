@@ -39,6 +39,7 @@ if(isset($_POST['importSubmit'])){
             $csvFile = fopen($_FILES['file']['tmp_name'], 'r');
             
             $first_line = true;
+            $con->query("DELETE FROM accounts WHERE id_concorso = $id_concorso_sel");
            
             
             // Parse data from CSV file line by line
@@ -52,7 +53,7 @@ if(isset($_POST['importSubmit'])){
                 $cod_anagrafica = $line[0];
                 $cod_risposte  = $line[1];
 
-                $con->query("DELETE * FROM accounts WHERE id_concorso = $id_concorso_sel");
+                
                 $con->query("INSERT INTO accounts (cod_anagrafica,cod_risposte,id_concorso) VALUES('".$cod_anagrafica."','".$cod_risposte."','".$id_concorso_sel."')");
             }
             
