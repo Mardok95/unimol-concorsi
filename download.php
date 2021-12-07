@@ -5,7 +5,7 @@ if (!isset($_SESSION['loggedin'])) {
 	header('Location: index.html');
 	exit;
 }
-define('PATH','C:\wamp64\allegati_concorso\\');
+define('PATH','C:\prova\\');
 
 $filename = PATH.$_SESSION['cod_risposta'].'.pdf';
 

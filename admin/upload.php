@@ -39,11 +39,19 @@ if($_FILES["zip_file"]["name"]) {
 
     $continue = strtolower($name[1]) == 'zip' ? true : false;
     if(!$continue) {
-        $message = "The file you are trying to upload is not a .zip file. Please try again.";
+        $message = "Il file scelto non è un ZIP. Riprova!";
     }
 
   /* PHP current path */
   $path = 'C:/prova'.'/';
+
+  $files = glob('C:/prova/*'); // get all file names
+        foreach($files as $file){ // iterate files
+            if(is_file($file)) {
+                unlink($file); // delete file
+            }
+        }
+
   //$path = dirname(__FILE__).'/';  // absolute path to the directory where zipper.php is in
   $filenoext = basename ($filename, '.zip');  // absolute path to the directory where zipper.php is in (lowercase)
   $filenoext = basename ($filenoext, '.ZIP');  // absolute path to the directory where zipper.php is in (when uppercase)
@@ -86,6 +94,7 @@ if($_FILES["zip_file"]["name"]) {
         <meta charset="utf-8">
 		<title>Upload ZIP</title>
 		<link href="style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
 
@@ -98,14 +107,15 @@ if($_FILES["zip_file"]["name"]) {
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
+        <hr></hr>
         <form enctype="multipart/form-data" method="post" action="">
-        <div class="mb-3">
-            <label for="formFile" class="form-label">Scegli un file zip: <input type="file" name="zip_file" /></label>
-            <input class="form-control" type="submit" id="formFile" value="Upload"  />
-        </div>
+            <div class="d-flex justify-content-center">
+                <label for="formFileLg" class="form-label">Scegli un file zip: <input type="file" name="zip_file" /></label>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </div>
         </form>
+        <hr></hr>
     </body>
-    <!-- https://getbootstrap.com/docs/5.0/forms/form-control/ -->
 </html>
 
 

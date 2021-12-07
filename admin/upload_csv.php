@@ -47,89 +47,86 @@ if(!empty($_GET['status'])){
 
 <!DOCTYPE html>
 <html lang="it">
-<head>
-	<meta charset="utf-8">
-	<title>Carica CSV</title>
+    <head>
+        <meta charset="utf-8">
+        <title>Carica CSV</title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <!-- Bootstrap library -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
 
-    <!-- Bootstrap library -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <body>
+        <!-- Display status message -->
+        <?php if(!empty($statusMsg)){ ?>
+            <div class="col-xs-12">
+                <div class="alert <?php echo $statusType; ?>"><?php echo $statusMsg; ?></div>
+            </div>
+        <?php } ?>
+        <nav class="navtop">
+			<div>
+				<h1>Upload CSV</h1>
+				<a href="home.php"><i class="fas fa-home"></i>Home</a>
+				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+			</div>
+		</nav>
 
-</head>
-
-<body>
-    <!-- Display status message -->
-    <?php if(!empty($statusMsg)){ ?>
-        <div class="col-xs-12">
-            <div class="alert <?php echo $statusType; ?>"><?php echo $statusMsg; ?></div>
+        <div class="d-flex justify-content-center">
+            <form action="import_data.php" method="post" enctype="multipart/form-data">
+                <label for="concorsi">Scegli un conocrso</label>
+                <select name="select_concorso">
+                    <?php
+                        $res_concorsi = $con->query("SELECT * FROM concorsi WHERE abilitato=1 ORDER BY id DESC");
+                        while($row = $res_concorsi->fetch_object()){
+                            $id_concorso=$row->id;
+                            $denominazione_concorso=$row->denominazione;
+                            echo "<option value='".$id_concorso."'>".$denominazione_concorso."</option>";
+                        }
+                    ?> 
+                </select>
+                <div class="d-flex justify-content-center" id="importFrm" style="display: none;">
+                    <input type="file" name="file" />
+                    <input type="submit" class="btn btn-primary" name="importSubmit" value="IMPORT">
+            </div>
+            </form>
         </div>
-    <?php } ?>
-
-    <div class="row">
-        <form action="import_data.php" method="post" enctype="multipart/form-data">
-            <div class="col-md-12">
-
-            <label for="concorsi">Scegli un conocrso</label>
-            <!--Prendo dal db il nome dei concorsi -->
-           
-
-
-            <select name="select_concorso">
-                <?php
-                    $res_concorsi = $con->query("SELECT * FROM concorsi WHERE abilitato=1 ORDER BY id DESC");
-                    while($row = $res_concorsi->fetch_object()){
-                        $id_concorso=$row->id;
-                        $denominazione_concorso=$row->denominazione;
-                        echo "<option value='".$id_concorso."'>".$denominazione_concorso."</option>";
-                    }
-                ?> 
-            </select>
-            <!-- CSV file upload form -->
-            <div class="col-md-12" id="importFrm" style="display: none;">
-            
-                <input type="file" name="file" />
-                <input type="submit" class="btn btn-primary" name="importSubmit" value="IMPORT">
         
-            </div>
-        </form>
     
-    </div>
-
         <!-- Import link -->
-        <div class="col-md-12 head">
-            <div class="float-right">
-                <a href="javascript:void(0);" class="btn btn-success" onclick="formToggle('importFrm');"><i class="plus"></i> Import</a>
+        <div class="d-flex justify-content-center">
+            <div>
+            <a href="javascript:void(0);" class="btn btn-success" onclick="formToggle('importFrm');"><i class="plus"></i>IMPORTA</a>
             </div>
         </div>
-
 
         <!-- Data list table --> 
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Codice Anagrafica</th>
-                    <th>Codice Risposte</th>
-                </tr>
-            </thead>
+        <div class="d-flex justify-content-center">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Codice Anagrafica</th>
+                        <th>Codice Risposte</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                <?php
-                // Get member rows
-                $result = $con->query("SELECT * FROM accounts ORDER BY id DESC");
-                if($result->num_rows > 0){
-                    while($row = $result->fetch_assoc()){
-                ?>
-                <tr>
-                    <td><?php echo $row['cod_anagrafica']; ?></td>
-                    <td><?php echo $row['cod_risposte']; ?></td>
-                </tr>
-                <?php } }else{ ?>
-                    <tr><td colspan="5">Nessun utente trovato!</td></tr>
-                <?php } ?>
-            </tbody>
-        </table>
-
-    </div>
-</body>
+                <tbody>
+                    <?php
+                    // Get member rows
+                    $result = $con->query("SELECT * FROM accounts ORDER BY id DESC");
+                    if($result->num_rows > 0){
+                        while($row = $result->fetch_assoc()){
+                    ?>
+                    <tr>
+                        <td><?php echo $row['cod_anagrafica']; ?></td>
+                        <td><?php echo $row['cod_risposte']; ?></td>
+                    </tr>
+                    <?php } }else{ ?>
+                        <tr><td colspan="5">Nessun utente trovato!</td></tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </body>
 
 <!-- Show/hide CSV upload form -->
 <script>

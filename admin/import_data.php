@@ -53,7 +53,7 @@ if(isset($_POST['importSubmit'])){
                 $cod_risposte  = $line[1];
 
                 $con->query("DELETE * FROM accounts WHERE id_concorso = $id_concorso_sel");
-                $con->query("INSERT INTO accounts (cod_anagrafica,cod_risposte,id_concorso) VALUES('".$cod_risposte."','".$cod_risposte."','".$id_concorso_sel."')");
+                $con->query("INSERT INTO accounts (cod_anagrafica,cod_risposte,id_concorso) VALUES('".$cod_anagrafica."','".$cod_risposte."','".$id_concorso_sel."')");
             }
             
             // Close opened CSV file
