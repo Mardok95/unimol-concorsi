@@ -1,13 +1,15 @@
 <?php
 session_start();
+require 'admin/config.php';
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
 	header('Location: index.html');
 	exit;
 }
-define('PATH','C:\prova\\');
 
-$filename = PATH.$_SESSION['cod_risposta'].'.pdf';
+$path = PATH_ALLEGATI.'/'.$_SESSION['id_concorso'].'/';
+
+$filename = $path.$_SESSION['cod_risposta'].'.pdf';
 
 header("Content-type:application/pdf");
 

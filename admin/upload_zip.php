@@ -57,19 +57,18 @@ if($_FILES["zip_file"]["name"]) {
         $message = "Il file scelto non è un ZIP. Riprova!";
     }
 
-  /* PHP current path */
-  $path = PATH_ALLEGATI.'/';
+    $id_concorso = $_POST["select_concorso"];
 
-  $files = glob($path.'*'); // get all file names
-        foreach($files as $file){ // iterate files
-            if(is_file($file)) {
-                unlink($file); // delete file
-            }
-        }
+  /* PHP current path */
+  $path = PATH_ALLEGATI.'/'.$id_concorso.'/';
+  if (is_dir($path))  rmdir_recursive ( $path);
+
+  mkdir($path, 0777);
+  
 
   //$path = dirname(__FILE__).'/';  // absolute path to the directory where zipper.php is in
-  $filenoext = basename ($filename, '.zip');  // absolute path to the directory where zipper.php is in (lowercase)
-  $filenoext = basename ($filenoext, '.ZIP');  // absolute path to the directory where zipper.php is in (when uppercase)
+  //$filenoext = basename ($filename, '.zip');  // absolute path to the directory where zipper.php is in (lowercase)
+  //$filenoext = basename ($filenoext, '.ZIP');  // absolute path to the directory where zipper.php is in (when uppercase)
 
   $targetdir = $path;
   //$targetdir = $path . $filenoext; // target directory
@@ -77,12 +76,6 @@ if($_FILES["zip_file"]["name"]) {
 
   /* create directory if not exists', otherwise overwrite */
   /* target directory is same as filename without extension */
-
-  //if (is_dir($targetdir))  rmdir_recursive ( $targetdir);
-
-
-  //mkdir($targetdir, 0777);
-
 
   /* here it is really happening */
 
