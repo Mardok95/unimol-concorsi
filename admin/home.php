@@ -46,7 +46,7 @@ if (!isset($_SESSION['loggedin'])) {
 			</p>
 			<p>
 				<button class="favorite styled" type="button">
-					<a href='upload.php'><i class="fas fa-file-archive"> Carica un zip</i></a>
+					<a href='upload_zip.php'><i class="fas fa-file-archive"> Carica un zip</i></a>
 				</button>
 			</p>
 			
