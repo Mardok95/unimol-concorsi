@@ -92,13 +92,6 @@ if(!empty($_GET['status'])){
         </div>
         
     
-        <!-- Import link 
-        <div class="d-flex justify-content-center">
-            <div>
-            <a href="javascript:void(0);" class="btn btn-success" onclick="formToggle('importFrm');"><i class="plus"></i>IMPORTA</a>
-            </div>
-        </div>
-        -->
 
         <!-- Data list table --> 
         <div class="d-flex justify-content-center">

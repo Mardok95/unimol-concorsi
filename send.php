@@ -32,5 +32,5 @@ $headers[] = 'MIME-Version: 1.0';
 $headers[] = 'Content-type: text/html; charset=UTF-8';
 mail($userEmail, "Richiesta di contatto effettuata con successo", $userMessage, implode("\r\n", $headers));
 mail($adminEmail, "Richiesta di contatto dal sito web", $adminMessage, implode("\r\n", $headers));
-echo "Messaggio inviato con successo";
-?>
+$qstring = "Mail inviata con successo!";
+header("Location: index.html");
