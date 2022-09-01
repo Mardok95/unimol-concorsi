@@ -1,9 +1,6 @@
 # unimol-concorsi
-Sistema in php per la gestione di anagrafica/risultati dei concorsi unimol
 
+Semplice web app che consente a chi ha sostenuto determinati concorsi presso l'Università degli studi del Molise, di poter visionare la propria prova svolta durante i suddetti concorsi.
 
-TODO:
-1) Verificare funzionamento del sistema 
-2) Aggiustare graficamente il sistema (fatto, più o meno)
-3) Creare un file CONFIG in cui mettere tutte le info dei path e le funzioni usate in tutti i file.php
-4) Fare in modo che upload.php (ZIP) crei una cartella per ogni concorso..usa la select, prendi l'ID del concorso e poi anche la denominazione, crei cartella con quel nome e dentro ci spari tutto. Devi fare lo stesso con utente
+Simple web app that allows those who have taken certain competitions at the University of Molise to view their test carried out during the aforementioned competitions.
+
