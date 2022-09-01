@@ -1,5 +1,5 @@
 <?php
-$adminEmail = 'statistica@unimol.it';
+$adminEmail = '++++++++++++';
 $userEmail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 $userMessage = "
   <html>
