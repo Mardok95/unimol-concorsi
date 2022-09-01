@@ -1,4 +1,4 @@
 <?php
-define("PATH_ALLEGATI","C:/prova");
+define("PATH_ALLEGATI","+++++++++++");
 
 ?>
