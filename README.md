@@ -11,3 +11,8 @@ Login page:
 User page:
 
 ![2](https://user-images.githubusercontent.com/43413304/187881611-99020424-20b3-4b36-8487-5f26f77c3290.png)
+
+Per motivi di privacy non mostrerò esempi di prove scritte sostenute.
+
+For privacy reasons I will not show examples of written evidence taken.
+
