@@ -7,7 +7,7 @@ if (!isset($_SESSION['loggedin'])) {
 	exit;
 }
 
-$db = mysqli_connect('localhost', 'root', '', 'unimol_concorsi');
+$db = mysqli_connect('+++++', '+++++', '+++++', '+++++++');
 
 	// initialize variables
 	$denominazione = "";
